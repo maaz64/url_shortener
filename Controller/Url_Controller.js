@@ -10,7 +10,7 @@ module.exports.shortUrl = async (req, res) => {
       const url = await Url.findOne({ originalUrl });
       if (url) {
         return res.status(200).json({
-            message:"Already Existed",
+            message:"Url Already Shortened",
             data: { url },
         });
       } else {
@@ -55,7 +55,7 @@ module.exports.visitOriginalUrl= async(req,res)=>{
                 error: "404 Not Found",
             })
         }
-
+        await Url.findOneAndUpdate({urlId},{clicks : url.clicks + 1},{new:true})
         return res.redirect(url.originalUrl);
         
     } catch (error) {
@@ -64,12 +64,3 @@ module.exports.visitOriginalUrl= async(req,res)=>{
         })
     }
 }
-
-
-module.exports.home = (req, res) => {
-
-  return res.status(200).json({
-    message:"We Are Good To Go Now",
-    data:{}
-  })
-};

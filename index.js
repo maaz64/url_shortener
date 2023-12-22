@@ -1,16 +1,18 @@
 const express = require('express');
 const db = require('./Config/mongoDB');
 const app = express();
-
-
+const passport = require('passport');
+const passportJWT = require('./Config/passport-jwt');
 const routes = require('./Routes/index');
 
-const Port = 8000;
+const Port =  8000;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+
 app.use('/',routes);
+
 
 app.listen(Port, (error)=>{
 
