@@ -15,9 +15,9 @@ module.exports.shortUrl = async (req, res) => {
         });
       } else {
         const urlId = generateUniqueId({
-            length: 10,
+            length: 6,
           });
-        const base =  'https://localhost:8000';
+        const base =  'https://url-shortener-two-beta.vercel.app';
         const shortUrl =  `${base}/${urlId}`;
         const url = await Url.create({
             originalUrl,

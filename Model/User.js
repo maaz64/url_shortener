@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-//  creating the schema 
+// creating user schema to store user data in db.
+// making email unique so that we can identify user.
 const userSchema =new mongoose.Schema({
     username:{
         type:String,
